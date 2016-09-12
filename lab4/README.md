@@ -191,7 +191,7 @@ Some tips:
 
 You might be a little more confused about what's happening, and how it works. This section can perhaps give you a little bit more idea. Included in the `part1` folder is a simple Makefile. There are several key parts to understand here:
 
-**Automatic Variables** - Things that look like `$@`, `$<`, and `$^` are called automatic variables. When Make parses through the Makefile, it'll automatically substitute them with the correct string. 
+**Automatic Variables** - Things that look like `$@`, `$<`, and `$^` are called automatic variables. When Make parses through the Makefile, it'll automatically substitute them with the correct string. Please use these with caution when you write your own makefiles. Make sure you understand the basics first before you use the automatic variables.
 
 - `$@`: target name
 - `$<`: first dependency
@@ -199,7 +199,7 @@ You might be a little more confused about what's happening, and how it works. Th
 
 **`GTEST_LL`** - This is variable that contains the necessary flags to compile a Google Test program. There are several flags in here:
 
-- `-I /usr/local/opt/gtest/include/`: `-I` means "look up includes in this directory". This is how `#include "gtest/gtest.h"` worked in the test program - when C++ tries to look up a file, it looks not only in the current directory, but in whatever directories specified by `-I` as well. Including the gtest header ensures all necessary functions are imported.
+- `-I /usr/include/gtest/`: `-I` means "look up includes in this directory". This is how `#include "gtest/gtest.h"` worked in the test program - when C++ tries to look up a file, it looks not only in the current directory, but in whatever directories specified by `-I` as well. Including the gtest header ensures all necessary functions are imported.
 - `-l gtest`: Use the library called "gtest". This includes all extra dependencies not included in the header file
 - `-l gtest_main`: Use the library called "gtest_main". Notice that there are no main functions at all in our test suite program. THat's because the `gtest_main` library comes with one. When we run the test, we're running a main function included in the Google Test framework that automatically detects all tests and execute them accordingly.
 - `-pthread`: Because Google Test runs tests in parallelize, enable threading support
@@ -211,5 +211,4 @@ You can probably safely copy this variable everywhere.
 **bin/fibTest** - The main test rule. It has two dependencies: the compiled fib object, and the test suite itself. For the command, we simply take all the dependencies and compile them, with the `GTEST_LL` variable. It's important that the libraries are loaded after the source files, or else the linker will likely throw an error.
 
 **tests** - A rule that just runs the tests. Optional. Notice that this is a phony rule, because it doesn't actually create any file.
-
 
