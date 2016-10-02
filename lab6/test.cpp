@@ -18,9 +18,9 @@ protected:
 	}
 
 	virtual void SetUp() {
-		tank = new Tank("Rachel");
+		tank = new Tank("Mark");
 		healer = new Healer("Aaron");
-		fighter = new Fighter("Cynthia");
+		fighter = new Fighter("David");
 	}
 
 	virtual void TearDown() {
