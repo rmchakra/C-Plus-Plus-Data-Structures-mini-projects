@@ -52,11 +52,11 @@ Doxygen comments here!
 
 Insert should do nothing if the name already exists in the hash table.
 */
-void HashTable::insert(std::string name) {
+void HashTable::insert(string name) {
 	unsigned hash = hash_str(name.c_str());
 	hash = hash % size;
 
-	// do the rest here!
+	// TODO
 }
 
 /**
@@ -64,8 +64,11 @@ Doxygen comments here!
 
 Find should return true if the name exists in the hash table.
 */
-bool HashTable::find(std::string name) {
-	// do the rest here!
+bool HashTable::find(string name) {
+	unsigned hash = hash_str(name.c_str());
+	hash = hash % size;
+
+	// TODO
 
 	return false;
 }
@@ -75,9 +78,9 @@ Doxygen comments here!
 
 Remove should do nothing if the name does not exist in the hash table.
 */
-void HashTable::remove(std::string name) {
+void HashTable::remove(string name) {
 	unsigned hash = hash_str(name.c_str());
 	hash = hash % size;
 
-	// do the rest here!
+	// TODO
 }
